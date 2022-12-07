@@ -1,0 +1,23 @@
+<p [routerLink]="'/'">back</p>
+<h1>Results</h1>
+<p>{{sunRes.sunrise}} / {{sunRes.sunset}}</p>
+<table>
+  <tr>
+    <th>timepoint</th>
+    <th>cloudcover</th>
+    <th>seeing</th>
+    <th>transparency</th>
+    <th>lifted index</th>
+    <th>rh2m</th>
+    <th>temp2m</th>
+  </tr>
+  <tr *ngFor="let data of meteoRes">
+    <td>{{data.timepoint}}</td>
+    <td>{{data.cloudcover}}</td>
+    <td>{{data.seeing}}</td>
+    <td>{{data.transparency}}</td>
+    <td>{{data.lifted_index}}</td>
+    <td>{{data.rh2m}}</td>
+    <td>{{data.temp2m}}</td>
+  </tr>
+</table>

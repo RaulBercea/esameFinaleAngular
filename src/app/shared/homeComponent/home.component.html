@@ -1,0 +1,18 @@
+<h1>Meteo Project</h1>
+
+<form name="wather" (ngSubmit)="getWeatherData()" >
+  <label for="latitude">Latitude</label>
+  <input [(ngModel)]="latitude" name="latitude" type="text">
+
+  <label for="longitude">Longitude</label>
+  <input [(ngModel)]="lognitude" name="longitude" type="text">
+
+  <button  type="submit">GO</button>
+</form>
+
+<h2>Example locations</h2>
+
+<div>
+  <p [routerLink]="'/results/45.0736456/7.535524'">Torino</p>
+  <p [routerLink]="'results/40.4379543/-3.6795367'">Madrid</p>
+</div>
