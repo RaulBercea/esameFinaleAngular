@@ -40,6 +40,7 @@ export class Results implements OnInit {
     this.route.params.subscribe((params) => {
       this.lat = params['lat'];
       this.long = params['long'];
+
       this.apiService
         .getSunsetAndSunrise(params['lat'], params['long'])
         .subscribe((res: any) => {
