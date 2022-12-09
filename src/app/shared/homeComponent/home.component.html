@@ -1,13 +1,26 @@
 <h1>Meteo Project</h1>
 
-<form name="wather" (ngSubmit)="getWeatherData()" >
-  <label for="latitude">Latitude</label>
-  <input [(ngModel)]="latitude" name="latitude" type="text">
-
-  <label for="longitude">Longitude</label>
-  <input [(ngModel)]="lognitude" name="longitude" type="text">
-
-  <button  type="submit">GO</button>
+<form class="border p-3 w-50 shadow rounded m-auto" name="wather" (ngSubmit)="getWeatherData()">
+  <div class=" mb-3">
+    <label class="form-label" for="latitude">Latitude</label>
+    <input
+      [(ngModel)]="latitude"
+      id="latitude"
+      name="latitude"
+      class="form-control"
+      type="text"
+    />
+  </div>
+  <div class="mb-3">
+    <label class="form-label" for="longitude">Longitude</label>
+    <input
+      class="form-control"
+      [(ngModel)]="lognitude"
+      name="longitude"
+      type="text"
+    />
+  </div>
+  <button class="btn btn-primary w-100 mb-3" type="submit">GO</button>
 </form>
 
 <h2>Example locations</h2>
