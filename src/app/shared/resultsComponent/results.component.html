@@ -2,7 +2,12 @@
   <i class="bi bi-backspace"></i>
   back
 </p>
-<h1 class="display-2 text-center">Results</h1>
+
+<div class="text-center">
+  <h1 class="display-2">Results for</h1>
+  <p class="lead">{{ this.lat }} / {{ this.long }}</p>
+</div>
+
 <p class="text-center h5">
   <i class="bi bi-sunrise"></i>
   Sunrise at: {{ sunRes.sunrise }}
@@ -12,8 +17,8 @@
 </p>
 <table class="table table-bordered m-2 w-75 m-auto">
   <thead>
-    <tr class="table-light">
-      <th scope="col">timepoint</th>
+    <tr class="table-primary">
+      <th scope="col">Hour</th>
       <th scope="col">Cloud Coverage</th>
       <th scope="col">Precipitation Type</th>
       <th scope="col">Relative Humidity</th>
