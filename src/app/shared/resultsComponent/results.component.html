@@ -1,23 +1,32 @@
-<p [routerLink]="'/'">back</p>
-<h1>Results</h1>
-<p>{{sunRes.sunrise}} / {{sunRes.sunset}}</p>
-<table>
-  <tr>
-    <th>timepoint</th>
-    <th>cloudcover</th>
-    <th>seeing</th>
-    <th>transparency</th>
-    <th>lifted index</th>
-    <th>rh2m</th>
-    <th>temp2m</th>
-  </tr>
-  <tr *ngFor="let data of meteoRes">
-    <td>{{data.timepoint}}</td>
-    <td>{{data.cloudcover}}</td>
-    <td>{{data.seeing}}</td>
-    <td>{{data.transparency}}</td>
-    <td>{{data.lifted_index}}</td>
-    <td>{{data.rh2m}}</td>
-    <td>{{data.temp2m}}</td>
-  </tr>
+<p class="btn btn-primary" [routerLink]="'/'">
+  <i class="bi bi-backspace"></i>
+  back
+</p>
+<h1 class="display-2 text-center">Results</h1>
+<p class="text-center h5">
+  <i class="bi bi-sunrise"></i>
+  Sunrise at: {{ sunRes.sunrise }}
+  /
+  <i class="bi bi-sunset"></i>
+  Sunset at: {{ sunRes.sunset }}
+</p>
+<table class="table table-bordered m-2 w-75 m-auto">
+  <thead>
+    <tr class="table-light">
+      <th scope="col">timepoint</th>
+      <th scope="col">Cloud Coverage</th>
+      <th scope="col">Precipitation Type</th>
+      <th scope="col">Relative Humidity</th>
+      <th scope="col">Temperature</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let data of meteoRes">
+      <td>{{ data.timepoint }}:00</td>
+      <td>{{ data.cloudcover }}</td>
+      <td>{{ data.prec_type }}</td>
+      <td>{{ data.rh2m }} %</td>
+      <td>{{ data.temp2m }} °C</td>
+    </tr>
+  </tbody>
 </table>

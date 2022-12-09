@@ -1,7 +1,19 @@
-<h1>Meteo Project</h1>
+<div class="p-3 d-flex justify-content-between border-bottom">
+  <h1 class="display-3">Meteo Project</h1>
+  <p class="display-3">
+    <i class="bi bi-cloud-sun"></i>
+  </p>
+</div>
+<form
+  class="border p-5 col-md-6 col-lg-4 col-sm-7 col-10 my-3 shadow rounded-3 m-auto"
+  name="wather"
+  (ngSubmit)="getWeatherData()"
+>
+  <p class="display-5 text-center mb-3 text-primary p-2">
+    Search for the Weather
+  </p>
 
-<form class="border p-3 w-50 shadow rounded m-auto" name="wather" (ngSubmit)="getWeatherData()">
-  <div class=" mb-3">
+  <div class="mb-3">
     <label class="form-label" for="latitude">Latitude</label>
     <input
       [(ngModel)]="latitude"
@@ -23,9 +35,25 @@
   <button class="btn btn-primary w-100 mb-3" type="submit">GO</button>
 </form>
 
-<h2>Example locations</h2>
+<h3 class="text-center my-3">Example locations</h3>
 
-<div>
-  <p [routerLink]="'/results/45.0736456/7.535524'">Torino</p>
-  <p [routerLink]="'results/40.4379543/-3.6795367'">Madrid</p>
+<div class="d-flex justify-content-center">
+  <p
+    class="btn m-2 btn-outline-primary rounded-pill"
+    [routerLink]="'/results/45.0736456/7.535524'"
+  >
+    Torino
+  </p>
+  <p
+    class="btn m-2 btn-outline-primary rounded-pill"
+    [routerLink]="'results/40.4379543/-3.6795367'"
+  >
+    Madrid
+  </p>
+  <p
+    class="btn m-2 btn-outline-primary rounded-pill"
+    [routerLink]="'results/40.6976684/-74.2605478'"
+  >
+    New York
+  </p>
 </div>
