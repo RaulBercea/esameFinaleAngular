@@ -2,7 +2,6 @@ import { Component, OnInit } from '@angular/core';
 import { apiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
-import { map } from 'rxjs';
 
 type dataseries = {
   cloudcover: string;
@@ -13,6 +12,7 @@ type dataseries = {
   temp2m: number;
   timepoint: number;
   transparency: number;
+  icon: string;
 };
 
 @Component({
@@ -26,7 +26,7 @@ export class Results implements OnInit {
     private route: ActivatedRoute
   ) {}
 
-  sunRes: any = {
+  sunRes = {
     sunrise: '',
     sunset: '',
   };
@@ -54,12 +54,43 @@ export class Results implements OnInit {
           this.meteoRes = res.dataseries;
 
           for (const data of this.meteoRes) {
+            // converting the timepoint into an hour
             if (data.timepoint > 24 && data.timepoint <= 48) {
               data.timepoint -= 24;
             } else if (data.timepoint > 48) {
               data.timepoint -= 48;
             }
 
+            // adding icons to the data
+            if (data.cloudcover <= '2') {
+              data.icon = 'bi bi-sun';
+            }
+
+            if (data.cloudcover <= '6') {
+              data.icon = 'bi bi-cloud-sun';
+            }
+
+            if (data.cloudcover == '7' && data.rh2m < 90) {
+              data.icon = 'bi bi-cloud';
+            }
+
+            if (data.cloudcover > '8') {
+              data.icon = 'bi bi-clouds';
+            }
+
+            if (data.cloudcover > '7' && data.rh2m > 90) {
+              data.icon = 'bi bi-cloud-fog';
+            }
+
+            if (data.prec_type == 'rain') {
+              data.icon = 'bi bi-cloud-rain';
+            }
+
+            if (data.prec_type == 'snow') {
+              data.icon = 'bi bi-snow';
+            }
+
+            // converting the cloud cover into a percentage
             switch (data.cloudcover.toString()) {
               case '1':
                 data.cloudcover = '0%-6%';
@@ -96,3 +127,4 @@ export class Results implements OnInit {
     });
   }
 }
+``;
