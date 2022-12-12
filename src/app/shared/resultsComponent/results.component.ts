@@ -74,11 +74,11 @@ export class Results implements OnInit {
               data.icon = 'bi bi-cloud';
             }
 
-            if (data.cloudcover > '8') {
+            if (data.cloudcover >= '8') {
               data.icon = 'bi bi-clouds';
             }
 
-            if (data.cloudcover > '7' && data.rh2m > 90) {
+            if (data.cloudcover >= '7' && data.rh2m > 90) {
               data.icon = 'bi bi-cloud-fog';
             }
 
