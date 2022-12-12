@@ -18,6 +18,7 @@
 <table class="table table-bordered m-2 w-75 m-auto">
   <thead>
     <tr class="table-primary">
+      <th scope="col">Icon</th>
       <th scope="col">Hour</th>
       <th scope="col">Cloud Coverage</th>
       <th scope="col">Precipitation Type</th>
@@ -27,6 +28,12 @@
   </thead>
   <tbody>
     <tr *ngFor="let data of meteoRes">
+      <td class="p-3">
+        <i
+          class="text-light text-bg-primary rounded-4 h2 px-2 py-1 text-center"
+          [ngClass]="data.icon"
+        ></i>
+      </td>
       <td>{{ data.timepoint }}:00</td>
       <td>{{ data.cloudcover }}</td>
       <td>{{ data.prec_type }}</td>
