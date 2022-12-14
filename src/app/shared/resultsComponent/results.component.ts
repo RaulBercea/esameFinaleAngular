@@ -2,8 +2,13 @@ import { Component, OnInit } from '@angular/core';
 import { apiService } from 'src/app/services/api.service';
 import { ActivatedRoute } from '@angular/router';
 import { HttpClient } from '@angular/common/http';
+import {
+  cloudCoverToPercentage,
+  addWeatherIcons,
+  convertTimePoint,
+} from 'src/app/services/weather.service';
 
-type dataseries = {
+export type dataseries = {
   cloudcover: string;
   lifted_index: number;
   prec_type: string;
@@ -55,76 +60,15 @@ export class Results implements OnInit {
 
           for (const data of this.meteoRes) {
             // converting the timepoint into an hour
-            if (data.timepoint > 24 && data.timepoint <= 48) {
-              data.timepoint -= 24;
-            } else if (data.timepoint > 48) {
-              data.timepoint -= 48;
-            }
+            convertTimePoint(data);
 
-            // adding icons to the data
-            if (data.cloudcover <= '2') {
-              data.icon = 'bi bi-sun';
-            }
-
-            if (data.cloudcover <= '6') {
-              data.icon = 'bi bi-cloud-sun';
-            }
-
-            if (data.cloudcover == '7' && data.rh2m < 90) {
-              data.icon = 'bi bi-cloud';
-            }
-
-            if (data.cloudcover >= '8') {
-              data.icon = 'bi bi-clouds';
-            }
-
-            if (data.cloudcover >= '7' && data.rh2m > 90) {
-              data.icon = 'bi bi-cloud-fog';
-            }
-
-            if (data.prec_type == 'rain') {
-              data.icon = 'bi bi-cloud-rain';
-            }
-
-            if (data.prec_type == 'snow') {
-              data.icon = 'bi bi-snow';
-            }
+            //adding icons
+            addWeatherIcons(data);
 
             // converting the cloud cover into a percentage
-            switch (data.cloudcover.toString()) {
-              case '1':
-                data.cloudcover = '0%-6%';
-                break;
-              case '2':
-                data.cloudcover = '6%-19%';
-                break;
-              case '3':
-                data.cloudcover = '19%-31%';
-                break;
-              case '4':
-                data.cloudcover = '31%-44%';
-                break;
-              case '5':
-                data.cloudcover = '44%-56%';
-                break;
-              case '6':
-                data.cloudcover = '56%-69%';
-                break;
-              case '7':
-                data.cloudcover = '69%-81%';
-                break;
-              case '8':
-                data.cloudcover = '81%-94%';
-                break;
-              case '9':
-                data.cloudcover = '94%-100%';
-                break;
-              default:
-                break;
-            }
+            cloudCoverToPercentage(data);
           }
         });
     });
   }
 }
-``;

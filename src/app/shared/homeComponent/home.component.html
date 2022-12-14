@@ -1,6 +1,6 @@
-<div class="p-3 d-flex justify-content-between border-bottom">
-  <h1 class="display-3">Meteo Project</h1>
-  <p class="display-3">
+<div class="p-3 d-flex justify-content-between border-bottom bg-light mb-2">
+  <h1 class="h1">Meteo Project</h1>
+  <p class="h1">
     <i class="bi bi-cloud-sun"></i>
   </p>
 </div>
@@ -12,7 +12,9 @@
   <p class="display-5 text-center mb-3 text-primary p-2">
     Search for the Weather
   </p>
-
+  <div *ngIf="error" class="alert alert-danger" role="allert">
+    Latitude and Longitude are required
+  </div>
   <div class="mb-3">
     <label class="form-label" for="latitude">Latitude</label>
     <input

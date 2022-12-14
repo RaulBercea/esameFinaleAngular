@@ -10,8 +10,14 @@ export class Home {
 
   latitude = "";
   lognitude = "";
+  error = false;
 
   getWeatherData(){
-    this.router.navigate(['/results/' + this.latitude + '/' + this.lognitude])
+    if(this.latitude && this.lognitude){
+      this.router.navigate(['/results/' + this.latitude + '/' + this.lognitude])
+    }
+    else{
+      this.error = true;
+    }
   }
 }

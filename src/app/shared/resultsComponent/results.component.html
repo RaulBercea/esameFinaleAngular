@@ -1,7 +1,13 @@
-<p class="btn btn-primary" [routerLink]="'/'">
-  <i class="bi bi-backspace"></i>
-  back
-</p>
+<div class="p-3 d-flex bg-light justify-content-between border-bottom mb-2">
+  <h1 class="h1">Meteo Project</h1>
+  <button
+    class="btn btn-primary fw-bold h-25"
+    [routerLink]="'/'"
+  >
+    <i class="bi bi-backspace"></i>
+     back
+  </button>
+</div>
 
 <div class="text-center w-100">
   <h1 class="display-3">Results for</h1>
@@ -15,30 +21,32 @@
   <i class="bi bi-sunset"></i>
   Sunset at: {{ sunRes.sunset }}
 </p>
-<table class="table table-bordered m-auto">
-  <thead>
-    <tr class="table-primary">
-      <th scope="col">Icon</th>
-      <th scope="col">Hour</th>
-      <th scope="col">Cloud Coverage</th>
-      <th scope="col">Precipitation Type</th>
-      <th scope="col">Relative Humidity</th>
-      <th scope="col">Temperature</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr *ngFor="let data of meteoRes">
-      <td class="p-3 text-center">
-        <i
-          class="text-light text-bg-primary rounded-4 h2 px-2 py-1"
-          [ngClass]="data.icon"
-        ></i>
-      </td>
-      <td>{{ data.timepoint }}:00</td>
-      <td>{{ data.cloudcover }}</td>
-      <td>{{ data.prec_type }}</td>
-      <td>{{ data.rh2m }} %</td>
-      <td>{{ data.temp2m }} °C</td>
-    </tr>
-  </tbody>
-</table>
+<div class="table-responsive">
+  <table class="table table-bordered m-auto">
+    <thead>
+      <tr class="table-primary">
+        <th scope="col">Icon</th>
+        <th scope="col">Hour</th>
+        <th scope="col">Cloud Coverage</th>
+        <th scope="col">Precipitation Type</th>
+        <th scope="col">Relative Humidity</th>
+        <th scope="col">Temperature</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let data of meteoRes">
+        <td class="p-3 text-center">
+          <i
+            class="text-light text-bg-primary rounded-4 h2 px-2 py-1"
+            [ngClass]="data.icon"
+          ></i>
+        </td>
+        <td>{{ data.timepoint }}:00</td>
+        <td>{{ data.cloudcover }}</td>
+        <td>{{ data.prec_type }}</td>
+        <td>{{ data.rh2m }} %</td>
+        <td>{{ data.temp2m }} °C</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

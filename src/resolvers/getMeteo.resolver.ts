@@ -4,7 +4,6 @@ import {
   Resolve,
   RouterStateSnapshot,
 } from '@angular/router';
-import { Observable } from 'rxjs';
 import { apiService } from 'src/app/services/api.service';
 
 @Injectable({
