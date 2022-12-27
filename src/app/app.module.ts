@@ -11,6 +11,7 @@ import { BlockUIModule } from 'ng-block-ui';
 import { BlockUIHttpModule } from 'ng-block-ui/http';
 @NgModule({
   declarations: [AppComponent, Home, Results],
+
   imports: [
     BrowserModule,
     HttpClientModule,
